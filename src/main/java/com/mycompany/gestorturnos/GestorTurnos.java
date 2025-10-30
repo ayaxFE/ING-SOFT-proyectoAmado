@@ -12,6 +12,7 @@ public class GestorTurnos {
 
     public static void main(String[] args) {
         System.out.print ("esto es un mensaje de prueba "); 
+        System.out.print ("segundo mensaje de prueba");
         
         
     }
