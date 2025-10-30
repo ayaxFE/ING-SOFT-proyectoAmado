@@ -11,6 +11,8 @@ package com.mycompany.gestorturnos;
 public class GestorTurnos {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.print ("esto es un mensaje de prueba "); 
+        
+        
     }
 }
