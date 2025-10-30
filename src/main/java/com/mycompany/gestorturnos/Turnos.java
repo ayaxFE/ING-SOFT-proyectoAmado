@@ -22,6 +22,7 @@ public class Turnos extends javax.swing.JFrame {
 
     public Turnos() {
         initComponents();
+        setLocationRelativeTo(null);
         modelo = (DefaultTableModel) Tabla.getModel(); // tu tabla
         modelo.setRowCount(0);
     }
@@ -36,7 +37,8 @@ public class Turnos extends javax.swing.JFrame {
             paciente.getDni(),            
             paciente.getObraSocial(),
             paciente.getHoraTurno(),     
-            paciente.getDiaMes() 
+            paciente.getDiaMes(), 
+            paciente.getMotivoConsulta(),
     });
     }
              
@@ -86,13 +88,13 @@ public class Turnos extends javax.swing.JFrame {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre y Apellido", "DNI", "Obra social", "Hora de turno ", "Dia/mes "
+                "Nombre y Apellido", "DNI", "Obra social", "Dia/mes ", "Hora de turno ", "Motivo de consulta "
             }
         ));
         jScrollPane2.setViewportView(Tabla);
@@ -259,7 +261,8 @@ public void agregarPacienteATabla(Paciente paciente) {
         paciente.getDni(),
         paciente.getObraSocial(),
         paciente.getHoraTurno(),
-        paciente.getDiaMes()
+        paciente.getDiaMes(),
+        paciente.getMotivoConsulta(),
     });
    
 }
