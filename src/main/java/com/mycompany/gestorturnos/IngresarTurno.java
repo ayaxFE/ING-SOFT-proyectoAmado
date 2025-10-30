@@ -53,6 +53,7 @@ public class IngresarTurno extends javax.swing.JFrame {
         SeccionEscribaObraSo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         SeccionMotivoConsulta = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -121,6 +122,8 @@ public class IngresarTurno extends javax.swing.JFrame {
         SeccionMotivoConsulta.setRows(5);
         jScrollPane1.setViewportView(SeccionMotivoConsulta);
 
+        jLabel1.setText("Ingrese ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,27 +135,32 @@ public class IngresarTurno extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelIngreseApellidoPaciente)
-                            .addComponent(LabelIngreseDNIPaciente)
-                            .addComponent(SeccionEscribaDNI)
-                            .addComponent(SeccionEscribaNombre)
-                            .addComponent(SeccionIngreseApellido)
-                            .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addComponent(LabelIngreseOBRASOPaciente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(LabelMotivoConsulta)
-                                .addGap(11, 11, 11))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelIngreseApellidoPaciente)
+                                    .addComponent(LabelIngreseDNIPaciente)
+                                    .addComponent(SeccionEscribaDNI)
+                                    .addComponent(SeccionEscribaNombre)
+                                    .addComponent(SeccionIngreseApellido)
+                                    .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                                    .addComponent(LabelIngreseOBRASOPaciente))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LabelMotivoConsulta)
+                                        .addGap(11, 11, 11))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -181,7 +189,9 @@ public class IngresarTurno extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,7 +234,7 @@ public class IngresarTurno extends javax.swing.JFrame {
         String apellido = SeccionIngreseApellido.getText();
         int dni = Integer.parseInt(SeccionEscribaDNI.getText());
         String obraSocial = SeccionEscribaObraSo.getText();
-        String motivo = SeccionMotivoConsulta.getText();
+        String MotivoConsulta = SeccionMotivoConsulta.getText();
 
         // Unimos nombre y apellido
         String nombreCompleto = nombre + " " + apellido;
@@ -234,7 +244,7 @@ public class IngresarTurno extends javax.swing.JFrame {
         String diaMes = "Sin asignar";
 
         // Creamos el paciente
-        Paciente paciente = new Paciente(nombreCompleto, dni, obraSocial, hora, diaMes);
+        Paciente paciente = new Paciente(nombreCompleto, dni, obraSocial, hora, diaMes,MotivoConsulta);
 
         // Enviamos a la ventana principal
         if (ventanaPrincipal != null) {
@@ -314,6 +324,7 @@ public class IngresarTurno extends javax.swing.JFrame {
     private javax.swing.JTextField SeccionIngreseApellido;
     private javax.swing.JTextArea SeccionMotivoConsulta;
     private javax.swing.JLabel TituloIngresarTurnos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
