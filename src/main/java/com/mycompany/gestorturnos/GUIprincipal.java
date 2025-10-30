@@ -11,16 +11,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ayaxFE
  */
-public class Turnos extends javax.swing.JFrame {
+public class GUIprincipal extends javax.swing.JFrame {
 
-    private static Paciente getPaciente() {
+    private static ConstruPaciente getPaciente() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     ArrayList<Turno> listaTurnos = new ArrayList<>();
     DefaultTableModel modelo;
 
-    public Turnos() {
+    public GUIprincipal() {
         initComponents();
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) Tabla.getModel(); // tu tabla
@@ -30,7 +30,7 @@ public class Turnos extends javax.swing.JFrame {
     public void agregarTurno(Turno turno) {
         listaTurnos.add(turno);
         
-        Paciente paciente = Turnos.getPaciente();
+        ConstruPaciente paciente = GUIprincipal.getPaciente();
         
         modelo.addRow(new Object[]{
             paciente.getNombreApellido(), 
@@ -183,7 +183,7 @@ public class Turnos extends javax.swing.JFrame {
 
     private void IngreseturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngreseturnoActionPerformed
                                       
-           IngresarTurno ventana = new IngresarTurno(this); // Pasamos referencia de la ventana actual
+           GUIIngresarTurno ventana = new GUIIngresarTurno(this); // Pasamos referencia de la ventana actual
     ventana.setVisible(true);
     
     }//GEN-LAST:event_IngreseturnoActionPerformed
@@ -230,20 +230,21 @@ public class Turnos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Turnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIprincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Turnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIprincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Turnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIprincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Turnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIprincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Turnos().setVisible(true);
+                new GUIprincipal().setVisible(true);
             }
         });
     }
@@ -252,9 +253,9 @@ public class Turnos extends javax.swing.JFrame {
 
 /**
  * Método para agregar un nuevo paciente a la JTable (jTable2)
- * @param paciente El objeto Paciente con los datos del turno a ingresar.
+ * @param paciente El objeto ConstruPaciente con los datos del turno a ingresar.
  */
-public void agregarPacienteATabla(Paciente paciente) {
+public void agregarPacienteATabla(ConstruPaciente paciente) {
      DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
     modelo.addRow(new Object[]{
         paciente.getNombreApellido(),

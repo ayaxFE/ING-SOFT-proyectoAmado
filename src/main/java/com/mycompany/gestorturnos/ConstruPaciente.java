@@ -8,7 +8,7 @@ package com.mycompany.gestorturnos;
  *
  * @author ayaxFE
  */
-public class Paciente {
+public class ConstruPaciente {
     //inicializadores de variables 
     private String nombreApellido;
     private int dni;
@@ -18,7 +18,7 @@ public class Paciente {
     private String MotivoConsulta; 
 
     // Constructor
-    public Paciente(String nombreApellido, int dni, String obraSocial, String horaTurno, String diaMes, String MotivoConsulta) {
+    public ConstruPaciente(String nombreApellido, int dni, String obraSocial, String horaTurno, String diaMes, String MotivoConsulta) {
         this.nombreApellido = nombreApellido;
         this.dni = dni;
         this.obraSocial = obraSocial;

@@ -10,15 +10,15 @@ package com.mycompany.gestorturnos;
  */
 import javax.swing.JOptionPane;
 
-public class IngresarTurno extends javax.swing.JFrame {
-    private Turnos ventanaPrincipal; 
+public class GUIIngresarTurno extends javax.swing.JFrame {
+    private GUIprincipal ventanaPrincipal; 
   
-    public IngresarTurno(Turnos principal) {
+    public GUIIngresarTurno(GUIprincipal principal) {
     initComponents();
     this.ventanaPrincipal = principal; // <-- CORRECTO
     setLocationRelativeTo(null);
 }
-     public IngresarTurno() {
+     public GUIIngresarTurno() {
         initComponents();
         setLocationRelativeTo(null);
     
@@ -244,7 +244,7 @@ public class IngresarTurno extends javax.swing.JFrame {
         String diaMes = "Sin asignar";
 
         // Creamos el paciente
-        Paciente paciente = new Paciente(nombreCompleto, dni, obraSocial, hora, diaMes,MotivoConsulta);
+        ConstruPaciente paciente = new ConstruPaciente(nombreCompleto, dni, obraSocial, hora, diaMes,MotivoConsulta);
 
         // Enviamos a la ventana principal
         if (ventanaPrincipal != null) {
@@ -292,20 +292,21 @@ public class IngresarTurno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIIngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIIngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIIngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIIngresarTurno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarTurno().setVisible(true);
+                new GUIIngresarTurno().setVisible(true);
             }
         });
     }
