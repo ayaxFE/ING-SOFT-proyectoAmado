@@ -182,26 +182,43 @@ public class GUIprincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IngreseturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngreseturnoActionPerformed
-                                      
-           GUIIngresarTurno ventana = new GUIIngresarTurno(this); // Pasamos referencia de la ventana actual
-    ventana.setVisible(true);
-    
+        GUIIngresarTurno ventana = new GUIIngresarTurno(this); // Pasamos referencia de la ventana actual
+        ventana.setVisible(true);
     }//GEN-LAST:event_IngreseturnoActionPerformed
 
     private void CancelarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarTurnoActionPerformed
-        int row = Tabla.getSelectedRow();
-
-        if (row < 0) {
-            JOptionPane.showMessageDialog(this,
-                    "no ha selecionado nada",
-                    "seleccione un reglon porfavor",
+        int filaSeleccionada = Tabla.getSelectedRow();
+        
+        if (filaSeleccionada < 0) {
+            JOptionPane.showMessageDialog(this, 
+                    "Debe seleccionar un turno de la tabla para cancelar.", 
+                    "Error", 
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
-            model.removeRow(row);
-          }
+
+            CancelarTurno ventanaConfirmar = new CancelarTurno(this, filaSeleccionada);
+            ventanaConfirmar.setVisible(true);
+        }
     }//GEN-LAST:event_CancelarTurnoActionPerformed
 
+    public void borrarTurnoSeleccionado(int filaABorrar) {
+        
+        // Verifica que la fila sea válida (por si acaso)
+        if (filaABorrar >= 0 && filaABorrar < modelo.getRowCount()) {
+            
+            // Borra la fila del modelo de la tabla (la parte visual)
+            modelo.removeRow(filaABorrar);
+            
+            // ¡IMPORTANTE! Borra también el turno de tu lista interna
+            // Si no haces esto, tus datos estarán desincronizados.
+            if (filaABorrar < listaTurnos.size()) {
+                listaTurnos.remove(filaABorrar);
+            }
+            
+            JOptionPane.showMessageDialog(this, "Turno cancelado correctamente.");
+        }
+    }
+    
     private void ModificarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTurnoActionPerformed
         //sirve para abrir pagina sobre pagina
         ModificarTurno mp = new ModificarTurno();
