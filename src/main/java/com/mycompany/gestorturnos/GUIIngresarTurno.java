@@ -388,3 +388,5 @@ public GUIIngresarTurno(GUIprincipal principal) {
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
+
+
