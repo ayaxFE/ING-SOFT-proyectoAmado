@@ -67,7 +67,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         jScrollPane1 = new javax.swing.JScrollPane();
         SeccionMotivoConsulta = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -139,7 +139,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         SeccionMotivoConsulta.setRows(5);
         jScrollPane1.setViewportView(SeccionMotivoConsulta);
 
-        jLabel2.setText("INGRESE LA FECHA DEL TURNO");
+        Fecha.setText("INGRESE LA FECHA DEL TURNO");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +179,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(Fecha)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(87, 87, 87)
@@ -190,14 +190,14 @@ public GUIIngresarTurno(GUIprincipal principal) {
                                         .addComponent(jTextField1))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LabelIngreseApellidoPaciente)
-                                    .addComponent(LabelIngreseDNIPaciente)
                                     .addComponent(SeccionEscribaDNI)
                                     .addComponent(SeccionEscribaNombre)
                                     .addComponent(SeccionIngreseApellido)
                                     .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                                    .addComponent(LabelIngreseOBRASOPaciente))
+                                    .addComponent(LabelIngreseOBRASOPaciente)
+                                    .addComponent(LabelIngreseDNIPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(LabelIngreseApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +237,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
                 .addComponent(jLabel1)
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(Fecha)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,6 +364,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Confirmar;
+    private javax.swing.JLabel Fecha;
     private javax.swing.JLabel LabelIngreseApellidoPaciente;
     private javax.swing.JLabel LabelIngreseDNIPaciente;
     private javax.swing.JLabel LabelIngreseNombrePaciente;
@@ -377,7 +378,6 @@ public GUIIngresarTurno(GUIprincipal principal) {
     private javax.swing.JLabel TituloIngresarTurnos;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
