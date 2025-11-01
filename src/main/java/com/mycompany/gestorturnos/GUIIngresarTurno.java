@@ -297,6 +297,8 @@ public GUIIngresarTurno(GUIprincipal principal) {
         if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}")) {
             JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM (por ejemplo: 15/11).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
             return;
+
+
         }
 
         int dni = Integer.parseInt(dniTexto);
@@ -357,6 +359,8 @@ public GUIIngresarTurno(GUIprincipal principal) {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Confirmar;
