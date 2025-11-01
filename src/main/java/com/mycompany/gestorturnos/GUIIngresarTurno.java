@@ -22,7 +22,7 @@ public class GUIIngresarTurno extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     
-    
+         System.out.println("hola");
 }
 
     /**
