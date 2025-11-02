@@ -5,8 +5,10 @@
 package com.mycompany.gestorturnos;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ayaxFE
@@ -16,15 +18,12 @@ public class GUIprincipal extends javax.swing.JFrame {
     private static ConstruPaciente getPaciente() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    private List<ConstruPaciente> listaTurnos = new ArrayList<>();
+    private javax.swing.table.DefaultTableModel modelo;
     public javax.swing.JTable getTabla() {
     return Tabla;
-}
-
-    ArrayList<Turno> listaTurnos = new ArrayList<>();
-    DefaultTableModel modelo;
-    
-
+}   
 
     public GUIprincipal() {
         initComponents();
@@ -33,7 +32,7 @@ public class GUIprincipal extends javax.swing.JFrame {
         modelo.setRowCount(0);
     }
 
-    public void agregarTurno(Turno turno) {
+    public void agregarTurno(ConstruPaciente turno) {
         listaTurnos.add(turno);
         
         ConstruPaciente paciente = GUIprincipal.getPaciente();
@@ -242,21 +241,17 @@ public class GUIprincipal extends javax.swing.JFrame {
         return;
     }
     
-    // 1. Obtener el OBJETO ConstruPaciente de tu lista interna
-    // (Asumiendo que listaTurnos está accesible)
     ConstruPaciente turnoAModificar = listaTurnos.get(filaSeleccionada); 
-
-    // 2. Abrir la ventana ModificarTurno, pasándole la fila y el objeto
     ModificarTurno ventanaModificar = new ModificarTurno(this, filaSeleccionada, turnoAModificar);
     ventanaModificar.setVisible(true);
-    public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado){
-    // Columnas de la tabla (Basado en la estructura de tu código):
-    // [3] Dia/mes, [4] Hora de turno, [5] Motivo de consulta
-    
+    public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado){   
     // Solo actualizamos las columnas que el usuario puede modificar
+    if(modelo != null){
     modelo.setValueAt(turnoActualizado.getDiaMes(), filaModificar, 3);
     modelo.setValueAt(turnoActualizado.getHoraTurno(), filaModificar, 4);
     modelo.setValueAt(turnoActualizado.getMotiConsulta(), filaModificar, 5);
+    }
+    
     }//GEN-LAST:event_ModificarTurnoActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -270,7 +265,7 @@ public class GUIprincipal extends javax.swing.JFrame {
  */
 public void agregarPacienteATabla(ConstruPaciente paciente) {
      DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
-    modelo.addRow(new Object[]{
+        modelo.addRow(new Object[]{
         paciente.getNombreApellido(),
         paciente.getDni(),
         paciente.getObraSocial(),
@@ -278,7 +273,7 @@ public void agregarPacienteATabla(ConstruPaciente paciente) {
         paciente.getHoraTurno(),
         paciente.getMotiConsulta(),
     });
-   
+   agregarTurno(paciente);
 }
 
 // Además, debes modificar el método IngreseturnoActionPerformed para que se vea así:
