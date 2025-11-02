@@ -207,7 +207,7 @@ public class ModificarTurno extends javax.swing.JFrame {
             String nuevoMotivo = TextoConsulta.getText().trim();
 
             // Validamos que los espacios estan vacios
-            if (nuevoDia.isEmpty() || nuevoMotivo.isEmpty() || nuevaHora == null) {
+            if (nuevoDia.isEmpty()|| nuevaHora == null) {
                 JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
             }

@@ -36,13 +36,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         }
     }
 }
-
-     
-     
-     
-     
-     
-     
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -269,12 +263,8 @@ public GUIIngresarTurno(GUIprincipal principal) {
     private void SeccionEscribaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionEscribaNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SeccionEscribaNombreActionPerformed
-
-    
-    
-    
+   
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
-
 
    try {
         // Tomamos los valores de los campos
@@ -314,11 +304,6 @@ public GUIIngresarTurno(GUIprincipal principal) {
             JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        
-      
-        
-        
 
         int dni = Integer.parseInt(dniTexto);
         String nombreCompleto = nombre + " " + apellido;
@@ -353,7 +338,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
 
         JOptionPane.showMessageDialog(this, "Turno agregado correctamente.");
         this.dispose();
-
+        
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "El DNI debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
     

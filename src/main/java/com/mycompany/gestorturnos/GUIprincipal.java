@@ -276,7 +276,7 @@ public void agregarPacienteATabla(ConstruPaciente paciente) {
         paciente.getHoraTurno(),
         paciente.getMotiConsulta(),
     });
-   agregarTurno(paciente);
+   listaTurnos.add(paciente);
 }
 
 // Además, debes modificar el método IngreseturnoActionPerformed para que se vea así:
