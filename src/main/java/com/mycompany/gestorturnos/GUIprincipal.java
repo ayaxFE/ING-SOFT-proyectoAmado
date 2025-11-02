@@ -244,6 +244,8 @@ public class GUIprincipal extends javax.swing.JFrame {
     ConstruPaciente turnoAModificar = listaTurnos.get(filaSeleccionada); 
     ModificarTurno ventanaModificar = new ModificarTurno(this, filaSeleccionada, turnoAModificar);
     ventanaModificar.setVisible(true);
+    }
+    
     public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado){   
     // Solo actualizamos las columnas que el usuario puede modificar
     if(modelo != null){
@@ -251,6 +253,7 @@ public class GUIprincipal extends javax.swing.JFrame {
     modelo.setValueAt(turnoActualizado.getHoraTurno(), filaModificar, 4);
     modelo.setValueAt(turnoActualizado.getMotiConsulta(), filaModificar, 5);
     }
+
     
     }//GEN-LAST:event_ModificarTurnoActionPerformed
 
