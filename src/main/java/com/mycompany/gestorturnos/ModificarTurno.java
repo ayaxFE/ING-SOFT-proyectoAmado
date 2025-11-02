@@ -235,7 +235,7 @@ public class ModificarTurno extends javax.swing.JFrame {
                 }
 
                 // Solo verifica si la fecha/hora es distinta a la original
-            if (!nuevoDia.equals(turnoSeleccionado.getDiaMes()) || !nuevaHora.equals(turnoSeleccionado.getHoraTurno())) {
+            if (nuevoDia.equals(turnoSeleccionado.getDiaMes()) || nuevaHora.equals(turnoSeleccionado.getHoraTurno())) {
                 javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) ventanaPrincipal.getTabla().getModel();
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                      if (i == filaModificar) continue; 
@@ -248,34 +248,19 @@ public class ModificarTurno extends javax.swing.JFrame {
                         return;
                         }
                 }
+            
             }
+            // Esto automáticamente actualiza el objeto en la lista interna de GUIprincipal
+            turnoSeleccionado.setDiaMes(nuevoDia);
+            turnoSeleccionado.setHoraTurno(nuevaHora);
+            turnoSeleccionado.setMotivoConsulta(nuevoMotivo);
         
-        // Esto automáticamente actualiza el objeto en la lista interna de GUIprincipal
-        turnoSeleccionado.setDiaMes(nuevoDia);
-        turnoSeleccionado.setHoraTurno(nuevaHora);
-        turnoSeleccionado.setMotivoConsulta(nuevoMotivo);
+            // Notificar a la ventana principal para que actualice la vista 
+            ventanaPrincipal.actualizarTurnoEnTabla(filaModificar, turnoSeleccionado);
         
-        // Notificar a la ventana principal para que actualice la vista 
-        ventanaPrincipal.actualizarTurnoEnTabla(filaModificar, turnoSeleccionado);
-        
-        JOptionPane.showMessageDialog(this, "Turno modificado correctamente.");
-        this.dispose();
+            JOptionPane.showMessageDialog(this, "Turno modificado correctamente.");
+            this.dispose();
 
-        if (ventanaPrincipal != null) {
-            javax.swing.table.DefaultTableModel modelo = 
-                (javax.swing.table.DefaultTableModel) ventanaPrincipal.getTabla().getModel();
-
-            for (int i = 0; i < modelo.getRowCount(); i++) {
-                String fechaExistente = (String) modelo.getValueAt(i, 3); // Columna 3 = Dia/Mes
-                String horaExistente = (String) modelo.getValueAt(i, 4);  // Columna 4 = Hora turno
-                                               
-                if (nuevoDia.equals(fechaExistente) && nuevaHora.equals(horaExistente)) {
-                    JOptionPane.showMessageDialog(this, "Ya hay un turno reservado para esa fecha y hora.", "Turno duplicado", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            }
-        }
-    
         } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
