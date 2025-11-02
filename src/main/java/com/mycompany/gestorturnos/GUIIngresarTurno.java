@@ -323,7 +323,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         int dni = Integer.parseInt(dniTexto);
         String nombreCompleto = nombre + " " + apellido;
 
-        // 🔍 Validar si ya existe un turno en la misma fecha y hora
+        // Validar si ya existe un turno en la misma fecha y hora
         if (ventanaPrincipal != null) {
             javax.swing.table.DefaultTableModel modelo = 
                 (javax.swing.table.DefaultTableModel) ventanaPrincipal.getTabla().getModel();
