@@ -16,6 +16,8 @@ public class ConstruPaciente {
     private String horaTurno;
     private String diaMes;
     private String MotivoConsulta; 
+    
+    
 
     // Constructor
     public ConstruPaciente(String nombreApellido, int dni, String obraSocial, String horaTurno, String diaMes, String MotivoConsulta) {
