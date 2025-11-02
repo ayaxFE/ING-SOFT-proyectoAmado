@@ -4,6 +4,8 @@
  */
 package com.mycompany.gestorturnos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ayaxFE
@@ -21,12 +23,12 @@ public class ModificarTurno extends javax.swing.JFrame {
         this.turnoSeleccionado = turno;
     }
     private void cargarHorarios() {
-        CambiarHora.removeAllItems();
+        ComboSelector.removeAllItems();
         int hora = 8;
         int minuto = 0;
         while (hora < 19 || (hora == 19 && minuto == 0)) {
             String h = String.format("%02d:%02d", hora, minuto);
-            CambiarHora.addItem(h);
+            ComboSelector.addItem(h);
 
             minuto += 40;
             if (minuto >= 60) {
@@ -39,11 +41,11 @@ public class ModificarTurno extends javax.swing.JFrame {
     // 🔽 CÓDIGO NUEVO: Precargar los valores actuales del turno
     private void cargarDatosIniciales() {
         // Cargar los valores actuales del objeto en los campos de la ventana:
-        Texto_N_Dia.setText(turnoSeleccionado.getDiaMes());
-        Texto_N_Consulta.setText(turnoSeleccionado.getMotivoConsulta());
+        TextoDia.setText(turnoSeleccionado.getDiaMes());
+        TextoMotivo.setText(turnoSeleccionado.getMotiConsulta());
         
         // Seleccionar la hora actual en el JComboBox
-        CambiarHora.setSelectedItem(turnoSeleccionado.getHoraTurno());
+        ComboSelector.setSelectedItem(turnoSeleccionado.getHoraTurno());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -201,9 +203,9 @@ public class ModificarTurno extends javax.swing.JFrame {
 
     private void BotonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarActionPerformed
         try {
-        String nuevaHora = (String) CambiarHora.getSelectedItem();
-        String nuevoDia = Texto_N_Dia.getText().trim();
-        String nuevoMotivo = Texto_N_Consulta.getText().trim();
+        String nuevaHora = (String) ComboSelector.getSelectedItem();
+        String nuevoDia = TextoDia.getText().trim();
+        String nuevoMotivo = TextoConsulta.getText().trim();
 
         // 1. Validaciones
         if (nuevoDia.isEmpty() || nuevoMotivo.isEmpty() || nuevaHora == null) {
@@ -233,7 +235,6 @@ public class ModificarTurno extends javax.swing.JFrame {
              return;
         }
 
-        // 2. 🔍 Validar duplicado (EXCLUYENDO EL TURNO ACTUAL)
         // Solo verifica si la fecha/hora es distinta a la original
         if (!nuevoDia.equals(turnoSeleccionado.getDiaMes()) || !nuevaHora.equals(turnoSeleccionado.getHoraTurno())) {
              javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) ventanaPrincipal.getTabla().getModel();

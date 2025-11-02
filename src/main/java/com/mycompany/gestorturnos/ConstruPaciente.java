@@ -44,14 +44,15 @@ public class ConstruPaciente {
     public String getHoraTurno() {
         return horaTurno; 
     }
+    
+    public void setHoraTurno(String horaTurno) {
+        this.horaTurno = horaTurno;
+    }
+   
     public String getDiaMes() {
         return diaMes; 
     }
     
-    public void setHoraTurno(String horaTurno) {
-    this.horaTurno = horaTurno;
-}
-
 public void setDiaMes(String diaMes) {
     this.diaMes = diaMes;
 }

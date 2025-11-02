@@ -44,7 +44,7 @@ public class GUIprincipal extends javax.swing.JFrame {
             paciente.getObraSocial(),
             paciente.getHoraTurno(),     
             paciente.getDiaMes(), 
-            paciente.getMotivoConsulta(),
+            paciente.getMotiConsulta(),
     });
     }
              
@@ -249,14 +249,14 @@ public class GUIprincipal extends javax.swing.JFrame {
     // 2. Abrir la ventana ModificarTurno, pasándole la fila y el objeto
     ModificarTurno ventanaModificar = new ModificarTurno(this, filaSeleccionada, turnoAModificar);
     ventanaModificar.setVisible(true);
-    public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado) {
+    public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado){
     // Columnas de la tabla (Basado en la estructura de tu código):
     // [3] Dia/mes, [4] Hora de turno, [5] Motivo de consulta
     
     // Solo actualizamos las columnas que el usuario puede modificar
     modelo.setValueAt(turnoActualizado.getDiaMes(), filaModificar, 3);
     modelo.setValueAt(turnoActualizado.getHoraTurno(), filaModificar, 4);
-    modelo.setValueAt(turnoActualizado.getMotivoConsulta(), filaModificar, 5);
+    modelo.setValueAt(turnoActualizado.getMotiConsulta(), filaModificar, 5);
     }//GEN-LAST:event_ModificarTurnoActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -276,7 +276,7 @@ public void agregarPacienteATabla(ConstruPaciente paciente) {
         paciente.getObraSocial(),
         paciente.getDiaMes(),
         paciente.getHoraTurno(),
-        paciente.getMotivoConsulta(),
+        paciente.getMotiConsulta(),
     });
    
 }
