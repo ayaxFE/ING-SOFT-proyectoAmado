@@ -290,6 +290,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         if (nombre.isEmpty() || apellido.isEmpty() || dniTexto.isEmpty() ||
             obraSocial.isEmpty() || motivoConsulta.isEmpty() || fechaTurno.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
+            System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");System.out.println("holaaaaaaaaaaaa");
             return;
         }
 
