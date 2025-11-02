@@ -297,9 +297,29 @@ public GUIIngresarTurno(GUIprincipal principal) {
         if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}")) {
             JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM (por ejemplo: 15/11).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
             return;
-
-
         }
+         try {
+            java.time.LocalDate hoy = java.time.LocalDate.now();
+            int dia = Integer.parseInt(fechaTurno.split("/")[0]);
+            int mes = Integer.parseInt(fechaTurno.split("/")[1]);
+            int anio = hoy.getYear(); // Usa el año actual
+
+            java.time.LocalDate fechaIngresada = java.time.LocalDate.of(anio, mes, dia);
+            java.time.DayOfWeek diaSemana = fechaIngresada.getDayOfWeek();
+
+            if (diaSemana == java.time.DayOfWeek.SATURDAY || diaSemana == java.time.DayOfWeek.SUNDAY) {
+                JOptionPane.showMessageDialog(this, "No se pueden asignar turnos los fines de semana.", "Turno inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+      
+        
+        
 
         int dni = Integer.parseInt(dniTexto);
         String nombreCompleto = nombre + " " + apellido;
@@ -313,6 +333,10 @@ public GUIIngresarTurno(GUIprincipal principal) {
                 String fechaExistente = (String) modelo.getValueAt(i, 3); // Columna 3 = Dia/Mes
                 String horaExistente = (String) modelo.getValueAt(i, 4);  // Columna 4 = Hora turno
 
+                
+                
+                
+ 
                 if (fechaTurno.equals(fechaExistente) && horaTurno.equals(horaExistente)) {
                     JOptionPane.showMessageDialog(this, "Ya hay un turno reservado para esa fecha y hora.", "Turno duplicado", JOptionPane.WARNING_MESSAGE);
                     return;
