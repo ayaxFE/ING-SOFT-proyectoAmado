@@ -9,15 +9,42 @@ package com.mycompany.gestorturnos;
  * @author ayaxFE
  */
 public class ModificarTurno extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ModificarTurno
-     */
-    public ModificarTurno() {
+    private GUIprincipal ventanaPrincipal;
+    private int filaModificar;
+    private ConstruPaciente turnoSeleccionado;
+    
+    public ModificarTurno(GUIprincipal principal, int fila, ConstruPaciente turno) {
         initComponents();
         setLocationRelativeTo(null);
+        this.ventanaPrincipal = principal;
+        this.filaModificar = fila;
+        this.turnoSeleccionado = turno;
     }
+    private void cargarHorarios() {
+        CambiarHora.removeAllItems();
+        int hora = 8;
+        int minuto = 0;
+        while (hora < 19 || (hora == 19 && minuto == 0)) {
+            String h = String.format("%02d:%02d", hora, minuto);
+            CambiarHora.addItem(h);
 
+            minuto += 40;
+            if (minuto >= 60) {
+                minuto -= 60;
+                hora++;
+            }
+        }
+    }
+    
+    // 🔽 CÓDIGO NUEVO: Precargar los valores actuales del turno
+    private void cargarDatosIniciales() {
+        // Cargar los valores actuales del objeto en los campos de la ventana:
+        Texto_N_Dia.setText(turnoSeleccionado.getDiaMes());
+        Texto_N_Consulta.setText(turnoSeleccionado.getMotivoConsulta());
+        
+        // Seleccionar la hora actual en el JComboBox
+        CambiarHora.setSelectedItem(turnoSeleccionado.getHoraTurno());
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -173,7 +200,72 @@ public class ModificarTurno extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCancelarActionPerformed
 
     private void BotonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarActionPerformed
-        // TODO add your handling code here:
+        try {
+        String nuevaHora = (String) CambiarHora.getSelectedItem();
+        String nuevoDia = Texto_N_Dia.getText().trim();
+        String nuevoMotivo = Texto_N_Consulta.getText().trim();
+
+        // 1. Validaciones
+        if (nuevoDia.isEmpty() || nuevoMotivo.isEmpty() || nuevaHora == null) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // 1.1. Validar formato de fecha (DD/MM) y si es fin de semana (Copiado de GUIIngresarTurno)
+        if (!nuevoDia.matches("\\d{1,2}/\\d{1,2}")) {
+             JOptionPane.showMessageDialog(this, "Ingrese el día con formato DD/MM (por ejemplo: 15/11).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
+             return;
+        }
+        try {
+            java.time.LocalDate hoy = java.time.LocalDate.now();
+            int dia = Integer.parseInt(nuevoDia.split("/")[0]);
+            int mes = Integer.parseInt(nuevoDia.split("/")[1]);
+            int anio = hoy.getYear(); 
+            java.time.LocalDate fechaIngresada = java.time.LocalDate.of(anio, mes, dia);
+            java.time.DayOfWeek diaSemana = fechaIngresada.getDayOfWeek();
+            
+            if (diaSemana == java.time.DayOfWeek.SATURDAY || diaSemana == java.time.DayOfWeek.SUNDAY) {
+                JOptionPane.showMessageDialog(this, "No se pueden asignar turnos los fines de semana.", "Turno inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
+             return;
+        }
+
+        // 2. 🔍 Validar duplicado (EXCLUYENDO EL TURNO ACTUAL)
+        // Solo verifica si la fecha/hora es distinta a la original
+        if (!nuevoDia.equals(turnoSeleccionado.getDiaMes()) || !nuevaHora.equals(turnoSeleccionado.getHoraTurno())) {
+             javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) ventanaPrincipal.getTabla().getModel();
+             for (int i = 0; i < modelo.getRowCount(); i++) {
+                 // **IMPORTANTE**: Saltamos la fila que estamos modificando para no chocar consigo misma
+                 if (i == filaModificar) continue; 
+                 
+                 String fechaExistente = (String) modelo.getValueAt(i, 3);
+                 String horaExistente = (String) modelo.getValueAt(i, 4);
+                 
+                 if (nuevoDia.equals(fechaExistente) && nuevaHora.equals(horaExistente)) {
+                     JOptionPane.showMessageDialog(this, "Ya hay un turno reservado para esa fecha y hora.", "Turno duplicado", JOptionPane.WARNING_MESSAGE);
+                     return;
+                 }
+             }
+        }
+        
+        // 3. ACTUALIZAR EL OBJETO ConstruPaciente (usa los setters)
+        // Esto automáticamente actualiza el objeto en la lista interna de GUIprincipal
+        turnoSeleccionado.setDiaMes(nuevoDia);
+        turnoSeleccionado.setHoraTurno(nuevaHora);
+        turnoSeleccionado.setMotivoConsulta(nuevoMotivo);
+        
+        // 4. Notificar a la ventana principal para que actualice la vista (JTable)
+        ventanaPrincipal.actualizarTurnoEnTabla(filaModificar, turnoSeleccionado);
+        
+        JOptionPane.showMessageDialog(this, "Turno modificado correctamente.");
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BotonAceptarActionPerformed
 
     private void ComboSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboSelectorActionPerformed

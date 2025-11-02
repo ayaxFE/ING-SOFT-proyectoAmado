@@ -48,10 +48,21 @@ public class ConstruPaciente {
         return diaMes; 
     }
     
-    public String getMotivoConsulta(){
-        return MotivoConsulta; 
-    }
-    
+    public void setHoraTurno(String horaTurno) {
+    this.horaTurno = horaTurno;
+}
+
+public void setDiaMes(String diaMes) {
+    this.diaMes = diaMes;
+}
+
+public String getMotiConsulta(){
+    return MotivoConsulta;
+}
+
+public void setMotivoConsulta(String MotivoConsulta) {
+    this.MotivoConsulta = MotivoConsulta;
+}  
     
     
 }

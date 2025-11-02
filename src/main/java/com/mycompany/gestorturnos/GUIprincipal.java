@@ -235,9 +235,28 @@ public class GUIprincipal extends javax.swing.JFrame {
     
     private void ModificarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTurnoActionPerformed
         //sirve para abrir pagina sobre pagina
-        ModificarTurno mp = new ModificarTurno();
-        mp.setVisible(true);
-        this.dispose();
+        int filaSeleccionada = Tabla.getSelectedRow(); // Asumiendo que tu tabla se llama Tabla
+
+    if (filaSeleccionada < 0) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un turno de la tabla para modificar.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // 1. Obtener el OBJETO ConstruPaciente de tu lista interna
+    // (Asumiendo que listaTurnos está accesible)
+    ConstruPaciente turnoAModificar = listaTurnos.get(filaSeleccionada); 
+
+    // 2. Abrir la ventana ModificarTurno, pasándole la fila y el objeto
+    ModificarTurno ventanaModificar = new ModificarTurno(this, filaSeleccionada, turnoAModificar);
+    ventanaModificar.setVisible(true);
+    public void actualizarTurnoEnTabla(int filaModificar, ConstruPaciente turnoActualizado) {
+    // Columnas de la tabla (Basado en la estructura de tu código):
+    // [3] Dia/mes, [4] Hora de turno, [5] Motivo de consulta
+    
+    // Solo actualizamos las columnas que el usuario puede modificar
+    modelo.setValueAt(turnoActualizado.getDiaMes(), filaModificar, 3);
+    modelo.setValueAt(turnoActualizado.getHoraTurno(), filaModificar, 4);
+    modelo.setValueAt(turnoActualizado.getMotivoConsulta(), filaModificar, 5);
     }//GEN-LAST:event_ModificarTurnoActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
