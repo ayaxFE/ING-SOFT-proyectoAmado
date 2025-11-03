@@ -3,11 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.gestorturnos;
-
+// aca importamos nuestros elementos a trabajar, como por ejemplo java.Swing(interfaces)
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Collections;
+import java.util.Comparator; 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -16,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
 public class GUIprincipal extends javax.swing.JFrame {
 
     private static ConstruPaciente getPaciente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
-
+    //inicializamos listas 
     private List<ConstruPaciente> listaTurnos = new ArrayList<>();
     private javax.swing.table.DefaultTableModel modelo;
     public javax.swing.JTable getTabla() {
@@ -30,6 +34,8 @@ public class GUIprincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) Tabla.getModel(); // tu tabla
         modelo.setRowCount(0);
+        
+        ListadorFechas.setText("Ordenar por Fecha");
     }
 
     public void agregarTurno(ConstruPaciente turno) {
@@ -58,7 +64,7 @@ public class GUIprincipal extends javax.swing.JFrame {
         Ingreseturno = new javax.swing.JButton();
         CancelarTurno = new javax.swing.JButton();
         ModificarTurno = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        ListadorFechas = new javax.swing.JButton();
         label1 = new java.awt.Label();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -128,10 +134,10 @@ public class GUIprincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("jButton8");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ListadorFechas.setText("Ordenar por fecha");
+        ListadorFechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ListadorFechasActionPerformed(evt);
             }
         });
 
@@ -156,18 +162,15 @@ public class GUIprincipal extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(164, 164, 164))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(Ingreseturno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(33, 33, 33)
                                     .addComponent(CancelarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(44, 44, 44)
-                                    .addComponent(ModificarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(45, 45, 45)))
-                            .addGap(4, 4, 4)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(ModificarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(49, 49, 49)
+                            .addComponent(ListadorFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -182,7 +185,7 @@ public class GUIprincipal extends javax.swing.JFrame {
                     .addComponent(Ingreseturno, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ModificarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ListadorFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -198,22 +201,28 @@ public class GUIprincipal extends javax.swing.JFrame {
         GUIIngresarTurno ventana = new GUIIngresarTurno(this); // Pasamos referencia de la ventana actual
         ventana.setVisible(true);
     }//GEN-LAST:event_IngreseturnoActionPerformed
-
+  
+    
+// boton para cancelar turno o borrarlo de listado 
     private void CancelarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarTurnoActionPerformed
         int filaSeleccionada = Tabla.getSelectedRow();
         
+        // evaluamos si la fila esta seleccionada sino es asi se tira un "error" 
         if (filaSeleccionada < 0) {
             JOptionPane.showMessageDialog(this, 
                     "Debe seleccionar un turno de la tabla para cancelar.", 
                     "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE); //se determina error 
         } else {
-
+            // si se quiere cancelar llamamos a a ventanaConfirmar para evaluar que se quiere eliminar 
             CancelarTurno ventanaConfirmar = new CancelarTurno(this, filaSeleccionada);
             ventanaConfirmar.setVisible(true);
+            
         }
     }//GEN-LAST:event_CancelarTurnoActionPerformed
-    // sera un metodo que borre la fila que seleccionamos de la tabla 
+   
+    
+// sera un metodo que borre la fila que seleccionamos de la tabla 
     public void borrarTurnoSeleccionado(int filaABorrar) {
         
         // Verifica que la fila sea válida (por si acaso)
@@ -223,14 +232,16 @@ public class GUIprincipal extends javax.swing.JFrame {
             modelo.removeRow(filaABorrar);
             
             // ¡IMPORTANTE! Borra también el turno de tu lista interna
-            // Si no haces esto, tus datos estarán desincronizados.
+            // Si no haces esto, tus datos estarán desincronizados y nos puede llegar a 
+            // dar errores inesperados.
             if (filaABorrar < listaTurnos.size()) {
                 listaTurnos.remove(filaABorrar);
             }
-            
+            //se muestra que la cancelacion fue exitosa por un mensaje por pantalla de funciones java
             JOptionPane.showMessageDialog(this, "Turno cancelado correctamente.");
         }
     }
+
     
     private void ModificarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTurnoActionPerformed
         //sirve para abrir pagina sobre pagina
@@ -256,16 +267,56 @@ public class GUIprincipal extends javax.swing.JFrame {
 
     
     }//GEN-LAST:event_ModificarTurnoActionPerformed
+    //nuestro boton de ordenar por fecha
+    private void ListadorFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadorFechasActionPerformed
+    // hace que el texto sea de tipo String en este caso dia y mes 
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+    
+    //permitira ordenar la lista por fecha con colecciones sort de ordenamiento y comparadores de java
+    Collections.sort(listaTurnos, new Comparator<ConstruPaciente>() {
+        public int compare(ConstruPaciente p1, ConstruPaciente p2) {
+            //try catch evaluara la posibilidad de excepciones 
+            try {
+                // Primero, comparamos por fecha
+                Date fecha1 = dateFormatter.parse(p1.getDiaMes());//obtiene fechas y las tranforma en datos reales 
+                Date fecha2 = dateFormatter.parse(p2.getDiaMes());
+                
+                int comparacionFecha = fecha1.compareTo(fecha2); // compara fechas y las  introduce en una variable entera
+                
+                // Si las fechas son iguales (es igual a cero), comparamos por hora de turnos
+                if (comparacionFecha == 0) {
+                    SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+                    Date hora1 = timeFormatter.parse(p1.getHoraTurno());
+                    Date hora2 = timeFormatter.parse(p2.getHoraTurno());
+                    return hora1.compareTo(hora2);
+                } else {
+                    return comparacionFecha;
+                }
+                
+            } catch (Exception e) {
+                // En caso de error de formato, no los mueve
+                return 0;
+            }
+        }
+    });
+    
+    // Borra lo que se ve en tabla o listado para reacomodar elementos 
+    modelo.setRowCount(0);
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    //vuelve a llenar la tabla con la lista ya ordenada por fechas 
+    for (ConstruPaciente paciente : listaTurnos) {
+        modelo.addRow(new Object[]{
+            paciente.getNombreApellido(),
+            paciente.getDni(),
+            paciente.getObraSocial(),
+            paciente.getDiaMes(),
+            paciente.getHoraTurno(),
+            paciente.getMotiConsulta()
+        });
 
-
-/**
- * Método para agregar un nuevo paciente a la JTable (jTable2)
- * @param paciente El objeto ConstruPaciente con los datos del turno a ingresar.
- */
+    }//GEN-LAST:event_ListadorFechasActionPerformed
+    }
+   // aplicamos el metodo y tomamos nuestros valores a utilizar otorgadas por el constructor 
 public void agregarPacienteATabla(ConstruPaciente paciente) {
      DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
         modelo.addRow(new Object[]{
@@ -279,16 +330,12 @@ public void agregarPacienteATabla(ConstruPaciente paciente) {
    listaTurnos.add(paciente);
 }
 
-// Además, debes modificar el método IngreseturnoActionPerformed para que se vea así:
-
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelarTurno;
     private javax.swing.JButton Ingreseturno;
+    private javax.swing.JButton ListadorFechas;
     private javax.swing.JButton ModificarTurno;
     private javax.swing.JTable Tabla;
-    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;

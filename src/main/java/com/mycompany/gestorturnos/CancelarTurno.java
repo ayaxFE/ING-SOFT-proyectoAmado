@@ -15,7 +15,7 @@ public class CancelarTurno extends javax.swing.JFrame {
     
     public CancelarTurno(GUIprincipal principal, int fila) {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // centra la ventana
         this.ventanaPrincipal = principal;
         this.filaParaBorrar = fila;
     }

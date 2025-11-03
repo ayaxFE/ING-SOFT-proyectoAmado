@@ -280,18 +280,20 @@ public GUIIngresarTurno(GUIprincipal principal) {
         if (nombre.isEmpty() || apellido.isEmpty() || dniTexto.isEmpty() ||
             obraSocial.isEmpty() || motivoConsulta.isEmpty() || fechaTurno.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
         }
 
-        // Validar formato de fecha (ej: 15/11)
-        if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}")) {
-            JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM (por ejemplo: 15/11).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
+        // Validar formato de fecha (ej: 15/11/2025)
+        if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) { // si lo que se escribe es distinto a eso ( los d y corchetes indican numeros que abarca el segmento, ej 2025 = 4 espacios/numeros ) 
+            JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM/YYYY (por ejemplo: 15/11/2025).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
             return;
         }
          try {
             java.time.LocalDate hoy = java.time.LocalDate.now();
             int dia = Integer.parseInt(fechaTurno.split("/")[0]);
             int mes = Integer.parseInt(fechaTurno.split("/")[1]);
-            int anio = hoy.getYear(); // Usa el año actual
+            int anio = Integer.parseInt(fechaTurno.split("/")[2]);
+          
 
             java.time.LocalDate fechaIngresada = java.time.LocalDate.of(anio, mes, dia);
             java.time.DayOfWeek diaSemana = fechaIngresada.getDayOfWeek();
@@ -317,10 +319,6 @@ public GUIIngresarTurno(GUIprincipal principal) {
                 String fechaExistente = (String) modelo.getValueAt(i, 3); // Columna 3 = Dia/Mes
                 String horaExistente = (String) modelo.getValueAt(i, 4);  // Columna 4 = Hora turno
 
-                
-                
-                
- 
                 if (fechaTurno.equals(fechaExistente) && horaTurno.equals(horaExistente)) {
                     JOptionPane.showMessageDialog(this, "Ya hay un turno reservado para esa fecha y hora.", "Turno duplicado", JOptionPane.WARNING_MESSAGE);
                     return;

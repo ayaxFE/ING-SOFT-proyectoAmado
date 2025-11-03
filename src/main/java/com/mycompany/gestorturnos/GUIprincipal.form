@@ -47,7 +47,7 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="ListadorFechas" min="-2" pref="152" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -67,7 +67,7 @@
                   <Component id="Ingreseturno" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="CancelarTurno" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="ModificarTurno" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="jButton8" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="ListadorFechas" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -194,12 +194,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarTurnoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JButton" name="ListadorFechas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton8"/>
+        <Property name="text" type="java.lang.String" value="Ordenar por fecha"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadorFechasActionPerformed"/>
       </Events>
     </Component>
     <Component class="java.awt.Label" name="label1">

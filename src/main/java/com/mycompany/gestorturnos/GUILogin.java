@@ -127,16 +127,18 @@ public class GUILogin extends javax.swing.JFrame {
        String usuario = NombreDeUsuario.getText();
         char[] passwordChars = ContraseñaDeUsuario.getPassword();
         String contrasena = new String(passwordChars);
-        
+       
+       // estos serian los valores que se deben ingresar para login 
        String usuarioCorrecto = "ConsultorioAmado";
        String contrasenaCorrecta = "salud";
        
+       //evaluamos esas condiciones 
        if (usuario.equals(usuarioCorrecto) && contrasena.equals(contrasenaCorrecta)){
             GUIprincipal mp = new GUIprincipal();
                 mp.setVisible(true);
                 this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(this, 
+       }else{ // sino reintentara y se manda error 
+           JOptionPane.showMessageDialog(this, // muestra un dialogo java por panel
                     "Usuario o contraseña incorrectos.", 
                     "Error de Acceso", 
                     JOptionPane.ERROR_MESSAGE);
