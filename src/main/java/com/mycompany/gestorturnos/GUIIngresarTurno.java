@@ -302,6 +302,11 @@ public GUIIngresarTurno(GUIprincipal principal) {
                 JOptionPane.showMessageDialog(this, "No se pueden asignar turnos los fines de semana.", "Turno inválido", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+              if (fechaIngresada.isBefore(hoy)) {
+        JOptionPane.showMessageDialog(this, "La fecha ingresada ya pasó. Ingrese una fecha actual o futura.", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
+        return;
+              }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
             return;
