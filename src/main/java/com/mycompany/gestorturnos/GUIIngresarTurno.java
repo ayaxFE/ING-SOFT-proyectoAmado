@@ -310,7 +310,11 @@ public GUIIngresarTurno(GUIprincipal principal) { //constructor para la pestaña
             JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+        //validamos que dni tengo los 8 espacios de un dni convencional
+        if (!dniTexto.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(this, "El DNI debe contener exactamente 8 números.", "DNI inválido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         // Validar formato de fecha (ej: 15/11/2025)
         if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) { // si lo que se escribe es distinto a eso ( los d y corchetes indican numeros que abarca el segmento, ej 2025 = 4 espacios/numeros ) 
