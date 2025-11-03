@@ -55,23 +55,23 @@ public class ConstruPaciente {
         return diaMes; 
     }
     
-public void setDiaMes(String diaMes) {
-    this.diaMes = diaMes;
-}
+    public void setDiaMes(String diaMes) {
+        this.diaMes = diaMes;
+    }
 
-public String getMotiConsulta(){
-    return MotivoConsulta;
-}
+    public String getMotiConsulta(){
+        return MotivoConsulta;
+    }
 
-public void setMotivoConsulta(String MotivoConsulta) {
-    this.MotivoConsulta = MotivoConsulta;
-}  
-public String getTelefono() {
-    return telefono;
-}
+    public void setMotivoConsulta(String MotivoConsulta) {
+        this.MotivoConsulta = MotivoConsulta;
+    }  
+    public String getTelefono() {
+        return telefono;
+    }
 
-public void setTelefono(String telefono) {
-    this.telefono = telefono;
-}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
        
 }
