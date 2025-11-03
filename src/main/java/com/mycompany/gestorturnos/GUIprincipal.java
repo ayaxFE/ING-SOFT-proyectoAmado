@@ -4,6 +4,8 @@
  */
 package com.mycompany.gestorturnos;
 // aca importamos nuestros elementos a trabajar, como por ejemplo java.Swing(interfaces)
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -34,24 +36,49 @@ public class GUIprincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) Tabla.getModel(); // tu tabla
         modelo.setRowCount(0);
-        
-        ListadorFechas.setText("Ordenar por Fecha");
-    }
 
-    public void agregarTurno(ConstruPaciente turno) {
-        listaTurnos.add(turno);
+        ListadorFechas.setText("Ordenar por Fecha");
+
+        // este codigo nos permite que por medio de un click de mouse se pueda consultar el motivo de turno 
+        Tabla.addMouseListener(new MouseAdapter() {
         
-        ConstruPaciente paciente = GUIprincipal.getPaciente();
-        
-        modelo.addRow(new Object[]{
-            paciente.getNombreApellido(), 
-            paciente.getDni(),            
-            paciente.getObraSocial(),
-            paciente.getHoraTurno(),     
-            paciente.getDiaMes(), 
-            paciente.getTelefono(),
-            paciente.getMotiConsulta(),
-    });
+            public void mouseClicked(MouseEvent e) {
+
+                // Obtenemos la fila y columna donde se hizo clic
+                int fila = Tabla.rowAtPoint(e.getPoint());
+                int columna = Tabla.columnAtPoint(e.getPoint());
+
+                // Verificamos que sea un clic válido y que sea en la columna 6 
+                // (Columna 6 = "Motivo de consulta" según tu código)
+                if (fila >= 0 && columna == 6) {
+
+                    // Obtenemos el texto COMPLETO de esa celda
+                    String textoCompleto = (String) modelo.getValueAt(fila, columna);
+
+                    // Mostramos el texto en una ventana emergente
+                    JOptionPane.showMessageDialog(GUIprincipal.this, 
+                    textoCompleto, 
+                    "Motivo de Consulta Completo", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+            }
+
+            public void agregarTurno(ConstruPaciente turno) {
+                listaTurnos.add(turno);
+
+                ConstruPaciente paciente = GUIprincipal.getPaciente();
+
+                modelo.addRow(new Object[]{
+                    paciente.getNombreApellido(), 
+                    paciente.getDni(),            
+                    paciente.getObraSocial(),
+                    paciente.getHoraTurno(),     
+                    paciente.getDiaMes(), 
+                    paciente.getTelefono(),
+                    paciente.getMotiConsulta(),
+            });
     }
              
     @SuppressWarnings("unchecked")

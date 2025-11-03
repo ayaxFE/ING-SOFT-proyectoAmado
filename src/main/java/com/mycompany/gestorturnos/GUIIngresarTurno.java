@@ -140,7 +140,7 @@ public GUIIngresarTurno(GUIprincipal principal) { //constructor para la pestaña
         jScrollPane1.setViewportView(SeccionMotivoConsulta);
 
         Fecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Fecha.setText("Ingrese la fecha de turno:");
+        Fecha.setText("Ingrese la fecha de turno (dd/mm/yyyy):");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,11 +176,11 @@ public GUIIngresarTurno(GUIprincipal principal) { //constructor para la pestaña
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(jComboBox1, 0, 319, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SeccionTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -194,19 +194,20 @@ public GUIIngresarTurno(GUIprincipal principal) { //constructor para la pestaña
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(SeccionEscribaDNI)
-                                .addComponent(SeccionEscribaNombre)
-                                .addComponent(SeccionIngreseApellido)
-                                .addComponent(SeccionEscribaObraSo)
                                 .addComponent(LabelIngreseOBRASOPaciente)
                                 .addComponent(LabelIngreseDNIPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LabelIngreseApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Fecha)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(SeccionEscribaNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SeccionIngreseApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SeccionEscribaDNI, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Fecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(93, 93, 93)
                                 .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addComponent(LabelMotivoConsulta)
                         .addGap(76, 76, 76))))
             .addGroup(jPanel1Layout.createSequentialGroup()
