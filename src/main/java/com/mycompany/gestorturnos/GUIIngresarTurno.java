@@ -9,22 +9,21 @@ package com.mycompany.gestorturnos;
  * @author ayaxFE
  */
 import javax.swing.JOptionPane;
-public class GUIIngresarTurno extends javax.swing.JFrame {
-    
+public class GUIIngresarTurno extends javax.swing.JFrame {    
+    private GUIprincipal ventanaPrincipal; //Pestaña en la pantalla inicial
 
-    private GUIprincipal ventanaPrincipal;
-
-public GUIIngresarTurno(GUIprincipal principal) {
+public GUIIngresarTurno(GUIprincipal principal) { //constructor para la pestaña de ingresar turnos
     initComponents();
     this.ventanaPrincipal = principal;
     setLocationRelativeTo(null); // Centrar ventana en pantalla
 
-    // 🔽 Cargar horarios de 08:00 a 19:00 cada 40 minutos
+    //Cargar los horarios de 08:00 a 19:00 hs (cada 40 minutos)
     jComboBox1.removeAllItems();
 
     int hora = 8;
     int minuto = 0;
-
+    
+    //Condiciones para las hs
     while (hora < 19 || (hora == 19 && minuto == 0)) {
         String h = String.format("%02d:%02d", hora, minuto);
         jComboBox1.addItem(h);
@@ -179,10 +178,6 @@ public GUIIngresarTurno(GUIprincipal principal) {
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Fecha)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -192,17 +187,20 @@ public GUIIngresarTurno(GUIprincipal principal) {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField1))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBox1, 0, 120, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(SeccionEscribaDNI)
                                     .addComponent(SeccionEscribaNombre)
                                     .addComponent(SeccionIngreseApellido)
-                                    .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                                    .addComponent(SeccionEscribaObraSo)
                                     .addComponent(LabelIngreseOBRASOPaciente)
                                     .addComponent(LabelIngreseDNIPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(LabelIngreseApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
@@ -228,7 +226,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
                         .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(LabelMotivoConsulta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(SeccionEscribaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -241,10 +239,10 @@ public GUIIngresarTurno(GUIprincipal principal) {
                         .addComponent(SeccionEscribaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LabelIngreseOBRASOPaciente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                        .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -258,7 +256,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SeccionTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -290,7 +288,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
 
    try {
-        // Tomamos los valores de los campos
+        // Tomamos los valores para los campos 
         String nombre = SeccionEscribaNombre.getText().trim();
         String apellido = SeccionIngreseApellido.getText().trim();
         String dniTexto = SeccionEscribaDNI.getText().trim();
@@ -300,7 +298,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         String horaTurno = (String) jComboBox1.getSelectedItem();
         String telefono = SeccionTelefono.getText().trim();
 
-  
+        //Valida que todos los campos esten vacios
         if (nombre.isEmpty() || apellido.isEmpty() || dniTexto.isEmpty() ||
             obraSocial.isEmpty()|| telefono.isEmpty() || motivoConsulta.isEmpty() || fechaTurno.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
@@ -311,38 +309,39 @@ public GUIIngresarTurno(GUIprincipal principal) {
         // Validar formato de fecha (ej: 15/11/2025)
         if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) { // si lo que se escribe es distinto a eso ( los d y corchetes indican numeros que abarca el segmento, ej 2025 = 4 espacios/numeros ) 
             JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM/YYYY (por ejemplo: 15/11/2025).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
-            return;
-            
-            
-            
-            
+            return;                                               
         }
-         try {
+        
+        //Variables de la fecha actual
+        try {
             java.time.LocalDate hoy = java.time.LocalDate.now();
             int dia = Integer.parseInt(fechaTurno.split("/")[0]);
             int mes = Integer.parseInt(fechaTurno.split("/")[1]);
             int anio = Integer.parseInt(fechaTurno.split("/")[2]);
           
-
+            //Toma los valores del dia actual    
             java.time.LocalDate fechaIngresada = java.time.LocalDate.of(anio, mes, dia);
             java.time.DayOfWeek diaSemana = fechaIngresada.getDayOfWeek();
 
+            //Consulta si el turno cae en fin de semana
             if (diaSemana == java.time.DayOfWeek.SATURDAY || diaSemana == java.time.DayOfWeek.SUNDAY) {
                 JOptionPane.showMessageDialog(this, "No se pueden asignar turnos los fines de semana.", "Turno inválido", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-              if (fechaIngresada.isBefore(hoy)) {
-        JOptionPane.showMessageDialog(this, "La fecha ingresada ya pasó. Ingrese una fecha actual o futura.", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
-        return;
-              }
             
-        } catch (Exception e) {
+            //Verifica que la fecha no se ingrese el dia anterior (ayer)
+            if (fechaIngresada.isBefore(hoy)) {
+                JOptionPane.showMessageDialog(this, "La fecha ingresada ya pasó. Ingrese una fecha actual o futura.", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+        } catch (Exception e) {//avisa que la fecha ingresada no es valida
             JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         int dni = Integer.parseInt(dniTexto);
-        String nombreCompleto = nombre + " " + apellido;
+        String nombreCompleto = nombre + " " + apellido; //Pone el nombre y apellido en el mismo campo
 
         // Validar si ya existe un turno en la misma fecha y hora
         if (ventanaPrincipal != null) {
@@ -368,10 +367,11 @@ public GUIIngresarTurno(GUIprincipal principal) {
             ventanaPrincipal.agregarPacienteATabla(paciente);
         }
 
+        //Crea el turno
         JOptionPane.showMessageDialog(this, "Turno agregado correctamente.");
         this.dispose();
         
-    } catch (NumberFormatException e) {
+    } catch (NumberFormatException e) { //Valida que el dni sea un numero correcto
         JOptionPane.showMessageDialog(this, "El DNI debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
     
     }
@@ -379,7 +379,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        this.dispose();
+        this.dispose(); //cierra la ventana
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void SeccionIngreseApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionIngreseApellidoActionPerformed

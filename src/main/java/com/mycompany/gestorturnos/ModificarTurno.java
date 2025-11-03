@@ -11,10 +11,11 @@ import javax.swing.JOptionPane;
  * @author ayaxFE
  */
 public class ModificarTurno extends javax.swing.JFrame {
-    private GUIprincipal ventanaPrincipal;
+    private GUIprincipal ventanaPrincipal; //Pestaña en la pantalla inicial
     private int filaModificar;
     private ConstruPaciente turnoSeleccionado;
     
+    //
     public ModificarTurno(GUIprincipal principal, int fila, ConstruPaciente turno) {
         initComponents();
         setLocationRelativeTo(null);
@@ -212,24 +213,35 @@ public class ModificarTurno extends javax.swing.JFrame {
                 return;
             }
 
-            // Validamos que el formato de la fecha (DD/MM) este dentro de la semana y no sea fin de semana
-            if (!nuevoDia.matches("\\d{1,2}/\\d{1,2}")) {
-                JOptionPane.showMessageDialog(this, "Ingrese el día con formato DD/MM (por ejemplo: 15/11).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
-                return;
+            //Valida el ingreso de la fecha del turno
+            if (!nuevoDia.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) { // si lo que se escribe es distinto a eso ( los d y corchetes indican numeros que abarca el segmento, ej 2025 = 4 espacios/numeros ) 
+                JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM/YYYY (por ejemplo: 15/11/2025).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
+                return; 
             }
+            
+            //Variables de la fecha actual
             try {
                 java.time.LocalDate hoy = java.time.LocalDate.now();
                 int dia = Integer.parseInt(nuevoDia.split("/")[0]);
                 int mes = Integer.parseInt(nuevoDia.split("/")[1]);
                 int anio = hoy.getYear(); 
+                
                 java.time.LocalDate fechaIngresada = java.time.LocalDate.of(anio, mes, dia);
                 java.time.DayOfWeek diaSemana = fechaIngresada.getDayOfWeek();
             
+                // Validamos que el formato de la fecha (DD/MM) este dentro de la semana y no sea fin de semana
                 if (diaSemana == java.time.DayOfWeek.SATURDAY || diaSemana == java.time.DayOfWeek.SUNDAY) {
                     JOptionPane.showMessageDialog(this, "No se pueden asignar turnos los fines de semana.", "Turno inválido", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-           } catch (Exception e) {
+           
+                //Verifica que la fecha no se ingrese el dia anterior (ayer)
+                if (fechaIngresada.isBefore(hoy)) {
+                    JOptionPane.showMessageDialog(this, "La fecha ingresada ya pasó. Ingrese una fecha actual o futura.", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
+            } catch (Exception e) {//avisa que la fecha ingresada no es valida
                 JOptionPane.showMessageDialog(this, "La fecha ingresada no es válida.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
                 return;
                 }
@@ -243,7 +255,8 @@ public class ModificarTurno extends javax.swing.JFrame {
                     String fechaExistente = (String) modelo.getValueAt(i, 3);
                     String horaExistente = (String) modelo.getValueAt(i, 4);
                  
-                     if (nuevoDia.equals(fechaExistente) && nuevaHora.equals(horaExistente)) {
+                    //Valida que hay un turno con la misma fehcs y hora que otro turno 
+                    if (nuevoDia.equals(fechaExistente) && nuevaHora.equals(horaExistente)) {
                         JOptionPane.showMessageDialog(this, "Ya hay un turno reservado para esa fecha y hora.", "Turno duplicado", JOptionPane.WARNING_MESSAGE);
                         return;
                         }
