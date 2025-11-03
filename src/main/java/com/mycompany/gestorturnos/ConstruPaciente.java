@@ -16,17 +16,19 @@ public class ConstruPaciente {
     private String horaTurno;
     private String diaMes;
     private String MotivoConsulta; 
+    private String telefono;
     
     
 
     // Constructor
-    public ConstruPaciente(String nombreApellido, int dni, String obraSocial, String horaTurno, String diaMes, String MotivoConsulta) {
+    public ConstruPaciente(String nombreApellido, int dni, String obraSocial, String horaTurno, String diaMes, String MotivoConsulta,String telefono) {
         this.nombreApellido = nombreApellido;
         this.dni = dni;
         this.obraSocial = obraSocial;
         this.horaTurno = horaTurno;
         this.diaMes = diaMes;
         this.MotivoConsulta = MotivoConsulta; 
+        this.telefono = telefono;
     }
 
     // sector de getter y setter
@@ -64,6 +66,12 @@ public String getMotiConsulta(){
 public void setMotivoConsulta(String MotivoConsulta) {
     this.MotivoConsulta = MotivoConsulta;
 }  
-    
-    
+public String getTelefono() {
+    return telefono;
+}
+
+public void setTelefono(String telefono) {
+    this.telefono = telefono;
+}
+       
 }

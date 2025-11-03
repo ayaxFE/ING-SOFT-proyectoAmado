@@ -47,24 +47,26 @@ public GUIIngresarTurno(GUIprincipal principal) {
         jTextField3 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         SeccionEscribaNombre = new javax.swing.JTextField();
-        LabelIngreseNombrePaciente = new javax.swing.JLabel();
+        javax.swing.JLabel LabelIngreseNombrePaciente = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
-        LabelIngreseApellidoPaciente = new javax.swing.JLabel();
+        javax.swing.JLabel LabelIngreseApellidoPaciente = new javax.swing.JLabel();
         SeccionIngreseApellido = new javax.swing.JTextField();
-        TituloIngresarTurnos = new javax.swing.JLabel();
-        LabelIngreseDNIPaciente = new javax.swing.JLabel();
-        LabelMotivoConsulta = new javax.swing.JLabel();
-        LabelIngreseOBRASOPaciente = new javax.swing.JLabel();
+        javax.swing.JLabel TituloIngresarTurnos = new javax.swing.JLabel();
+        javax.swing.JLabel LabelIngreseDNIPaciente = new javax.swing.JLabel();
+        javax.swing.JLabel LabelMotivoConsulta = new javax.swing.JLabel();
+        javax.swing.JLabel LabelIngreseOBRASOPaciente = new javax.swing.JLabel();
         SeccionEscribaDNI = new javax.swing.JTextField();
         SeccionEscribaObraSo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         SeccionMotivoConsulta = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        Fecha = new javax.swing.JLabel();
+        javax.swing.JLabel Fecha = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        SeccionTelefono = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -150,6 +152,14 @@ public GUIIngresarTurno(GUIprincipal principal) {
             }
         });
 
+        jLabel2.setText("INGRESE NUMERO DE TELEFNO:");
+
+        SeccionTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeccionTelefonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -193,12 +203,19 @@ public GUIIngresarTurno(GUIprincipal principal) {
                                     .addComponent(LabelIngreseApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(LabelIngreseNombrePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(LabelMotivoConsulta)
-                                .addGap(11, 11, 11))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LabelMotivoConsulta)
+                                        .addGap(11, 11, 11))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(SeccionTelefono))))))
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,15 +245,21 @@ public GUIIngresarTurno(GUIprincipal principal) {
                         .addComponent(SeccionEscribaObraSo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Fecha)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(SeccionTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,18 +298,24 @@ public GUIIngresarTurno(GUIprincipal principal) {
         String motivoConsulta = SeccionMotivoConsulta.getText().trim();
         String fechaTurno = jTextField1.getText().trim();
         String horaTurno = (String) jComboBox1.getSelectedItem();
+        String telefono = SeccionTelefono.getText().trim();
 
-        // Validaciones básicas
+  
         if (nombre.isEmpty() || apellido.isEmpty() || dniTexto.isEmpty() ||
-            obraSocial.isEmpty() || motivoConsulta.isEmpty() || fechaTurno.isEmpty()) {
+            obraSocial.isEmpty()|| telefono.isEmpty() || motivoConsulta.isEmpty() || fechaTurno.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos antes de confirmar.", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
 
         // Validar formato de fecha (ej: 15/11/2025)
         if (!fechaTurno.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) { // si lo que se escribe es distinto a eso ( los d y corchetes indican numeros que abarca el segmento, ej 2025 = 4 espacios/numeros ) 
             JOptionPane.showMessageDialog(this, "Ingrese la fecha con formato DD/MM/YYYY (por ejemplo: 15/11/2025).", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
             return;
+            
+            
+            
+            
         }
          try {
             java.time.LocalDate hoy = java.time.LocalDate.now();
@@ -332,7 +361,7 @@ public GUIIngresarTurno(GUIprincipal principal) {
         }
 
         // Crear el paciente
-        ConstruPaciente paciente = new ConstruPaciente(nombreCompleto, dni, obraSocial, horaTurno, fechaTurno, motivoConsulta);
+        ConstruPaciente paciente = new ConstruPaciente(nombreCompleto, dni, obraSocial, horaTurno, fechaTurno, motivoConsulta,telefono);
 
         // Enviar a la tabla principal
         if (ventanaPrincipal != null) {
@@ -369,27 +398,24 @@ public GUIIngresarTurno(GUIprincipal principal) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void SeccionTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SeccionTelefonoActionPerformed
+
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Confirmar;
-    private javax.swing.JLabel Fecha;
-    private javax.swing.JLabel LabelIngreseApellidoPaciente;
-    private javax.swing.JLabel LabelIngreseDNIPaciente;
-    private javax.swing.JLabel LabelIngreseNombrePaciente;
-    private javax.swing.JLabel LabelIngreseOBRASOPaciente;
-    private javax.swing.JLabel LabelMotivoConsulta;
     private javax.swing.JTextField SeccionEscribaDNI;
     private javax.swing.JTextField SeccionEscribaNombre;
     private javax.swing.JTextField SeccionEscribaObraSo;
     private javax.swing.JTextField SeccionIngreseApellido;
     private javax.swing.JTextArea SeccionMotivoConsulta;
-    private javax.swing.JLabel TituloIngresarTurnos;
+    private javax.swing.JTextField SeccionTelefono;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

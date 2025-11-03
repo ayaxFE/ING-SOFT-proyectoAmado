@@ -49,6 +49,7 @@ public class GUIprincipal extends javax.swing.JFrame {
             paciente.getObraSocial(),
             paciente.getHoraTurno(),     
             paciente.getDiaMes(), 
+            paciente.getTelefono(),
             paciente.getMotiConsulta(),
     });
     }
@@ -94,17 +95,17 @@ public class GUIprincipal extends javax.swing.JFrame {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre y Apellido", "DNI", "Obra social", "Dia/mes ", "Hora de turno ", "Motivo de consulta "
+                "Nombre y Apellido", "DNI", "Obra social", "Dia/mes ", "Hora de turno ", "telefono", "Motivo de consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -311,6 +312,7 @@ public class GUIprincipal extends javax.swing.JFrame {
             paciente.getObraSocial(),
             paciente.getDiaMes(),
             paciente.getHoraTurno(),
+            paciente.getTelefono(),
             paciente.getMotiConsulta()
         });
 
@@ -319,12 +321,14 @@ public class GUIprincipal extends javax.swing.JFrame {
    // aplicamos el metodo y tomamos nuestros valores a utilizar otorgadas por el constructor 
 public void agregarPacienteATabla(ConstruPaciente paciente) {
      DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+     
         modelo.addRow(new Object[]{
         paciente.getNombreApellido(),
         paciente.getDni(),
         paciente.getObraSocial(),
         paciente.getDiaMes(),
         paciente.getHoraTurno(),
+        paciente.getTelefono(),
         paciente.getMotiConsulta(),
     });
    listaTurnos.add(paciente);
