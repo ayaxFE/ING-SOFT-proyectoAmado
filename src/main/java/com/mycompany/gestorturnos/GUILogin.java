@@ -124,8 +124,8 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_NombreDeUsuarioActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
-       String usuario = NombreDeUsuario.getText();
-        char[] passwordChars = ContraseñaDeUsuario.getPassword();
+       String usuario = NombreDeUsuario.getText().trim();
+        char [] passwordChars = ContraseñaDeUsuario.getPassword();
         String contrasena = new String(passwordChars);
        
        // estos serian los valores que se deben ingresar para login 
